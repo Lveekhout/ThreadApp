@@ -18,11 +18,11 @@ public class TestScrollThread {
     }
 
     public void showSherm() {
-        scrollThread = new ScrollThread();
+        scrollThread = new ScrollThread(10, 30);
 
         TestScrollThreadGUIForm testScrollThreadGUIForm = new TestScrollThreadGUIForm(this);
         JFrame frame = new JFrame("testscrollthread");
-        frame.setPreferredSize(new Dimension(640,480));
+        frame.setPreferredSize(new Dimension(640, 480));
         frame.setContentPane(testScrollThreadGUIForm.getMainPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

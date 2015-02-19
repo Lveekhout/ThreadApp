@@ -7,20 +7,32 @@ package nl.lveekhout.threadapp.threads;
 
 public class ScrollThread extends Thread {
 
+    public int sleepTime;
+    private double smoothness;
     private double i = 0;
     public double x = 0;
-    public double y = 0;
+    public double y = 1;
+
+    public ScrollThread(int speed, int smoothness) {
+        this.sleepTime = speed;
+        this.smoothness = 1/(double)smoothness;
+    }
 
     @Override
     public void run() {
         try {
             while (true) {
-                x = Math.sin(i);
-                i += 0.1;
-                if (i>Math.PI) i -= Math.PI;
-                sleep(100);
+                x = Math.cos(i);
+                y = Math.sin(i);
+                i += smoothness;
+                if (i>2*Math.PI) i -= 2*Math.PI;
+                sleep(sleepTime);
             }
         } catch (InterruptedException e) {
         }
+    }
+
+    public void setSleepTime(int sleepTime) {
+        this.sleepTime = sleepTime;
     }
 }
